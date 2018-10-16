@@ -1,26 +1,19 @@
 package com.gmail.byelenka;
 
+import org.w3c.dom.css.Rect;
+
 public class MyFirstProgram {
 	public static void main (String[] args) {
 		hello("world");
 
-		double lenght = 5;
-        System.out.println("Площадь квадрата со стороной " + lenght + " равна " + area(lenght));
+		Square s = new Square(5);
+        System.out.println("Площадь квадрата со стороной " + s.l + " равна " + s.area());
 
-        double a = 2;
-        double b = 3;
-        System.out.println("Площадь прямоугольника со сторонами " + a + " и " + b + " равна " + area(a, b));
+        Rectangle r = new Rectangle(2,3);
+        System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " равна " + r.area());
 	}
 
 	public static void hello (String somebody) {
         System.out.println("Hello, " + somebody + "!");
-    }
-
-	public static double area (double l) {
-	    return l*l;
-    }
-
-    public static double area (double a, double b) {
-	    return a*b;
     }
 }

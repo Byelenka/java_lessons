@@ -1,7 +1,5 @@
 package com.gmail.byelenka;
 
-import org.w3c.dom.css.Rect;
-
 public class MyFirstProgram {
 	public static void main (String[] args) {
 		hello("world");
@@ -11,9 +9,12 @@ public class MyFirstProgram {
 
         Rectangle r = new Rectangle(2,3);
         System.out.println("Площадь прямоугольника со сторонами " + r.a + " и " + r.b + " равна " + r.area());
+
 	}
 
 	public static void hello (String somebody) {
-        System.out.println("Hello, " + somebody + "!");
+
+	    System.out.println("Hello, " + somebody + "!");
     }
+
 }

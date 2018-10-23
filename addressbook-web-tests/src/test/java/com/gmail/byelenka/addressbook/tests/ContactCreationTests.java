@@ -1,6 +1,6 @@
-package com.gmail.byelenka.addressbook;
+package com.gmail.byelenka.addressbook.tests;
 
-import com.gmail.byelenka.addressbook.tests.TestBase;
+import com.gmail.byelenka.addressbook.model.ContactData;
 import org.testng.annotations.Test;
 
 public class ContactCreationTests extends TestBase {

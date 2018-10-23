@@ -1,4 +1,4 @@
-package com.gmail.byelenka.addressbook;
+package com.gmail.byelenka.addressbook.model;
 
 public class ContactData {
     private final String firstname;

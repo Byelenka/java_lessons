@@ -1,8 +1,7 @@
 package com.gmail.byelenka.addressbook.appmanager;
 
-import com.gmail.byelenka.addressbook.ContactData;
+import com.gmail.byelenka.addressbook.model.ContactData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 

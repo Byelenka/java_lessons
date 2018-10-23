@@ -1,4 +1,4 @@
-package com.gmail.byelenka.addressbook;
+package com.gmail.byelenka.addressbook.model;
 
 public class GroupData {
     private final String name;

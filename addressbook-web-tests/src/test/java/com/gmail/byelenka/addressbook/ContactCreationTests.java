@@ -6,7 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class ContactCreationTests {
-  private WebDriver wd;
+  private FirefoxDriver wd;
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {

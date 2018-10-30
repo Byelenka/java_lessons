@@ -10,17 +10,11 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
         app.getNavigationHelper().gotoHomePage();
         if (! app.getContactHelper().isThereAContact()) {
-            if (! app.getGroupHelper().isThereAGroup()) {
-                app.getNavigationHelper().gotoGroupPage();
-                app.getGroupHelper().createGroup(new GroupData("test1", null, null));
-            }
-            app.getNavigationHelper().gotoHomePage();
-            app.getContactHelper().createContact(new ContactData("Leon", "Killer", "Paris", "killer@gmail.com", "+123456789", "test1"));
+            app.getContactHelper().createContact(new ContactData("Leon", "Killer", "Paris", "killer@gmail.com", "+123456789", "[none]"));
         }
         app.getContactHelper().initContactModification();
-        app.getContactHelper().fillContactForm(new ContactData("Leon", "Killer", "Paris", "killer@gmail.com", "+123456789", null), false);
+        app.getContactHelper().fillContactForm(new ContactData("Leon", "Killer", "Berlin", "leon@gmail.com", "+123456789", null), false);
         app.getContactHelper().submitContactModification();
         app.getNavigationHelper().gotoHomePage();
     }
-
 }

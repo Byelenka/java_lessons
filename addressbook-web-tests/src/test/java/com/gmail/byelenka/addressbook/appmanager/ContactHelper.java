@@ -10,8 +10,11 @@ import org.testng.Assert;
 
 public class ContactHelper extends HelperBase{
 
-    public ContactHelper(WebDriver wd) {
-        super(wd);
+    public ApplicationManager app;
+
+    public ContactHelper(ApplicationManager app) {
+        super(app.wd);
+        this.app = app;
     }
 
     public void submitContactCreation() {
@@ -54,5 +57,16 @@ public class ContactHelper extends HelperBase{
 
     public void confirmContactDeletion() {
         wd.switchTo().alert().accept();
+    }
+
+    public void createContact(ContactData contact) {
+        initContactCreation();
+        fillContactForm(contact, true);
+        submitContactCreation();
+        app.getNavigationHelper().gotoHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
     }
 }

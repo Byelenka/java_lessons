@@ -2,7 +2,10 @@ package com.gmail.byelenka.addressbook.tests;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
 import com.gmail.byelenka.addressbook.model.GroupData;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
@@ -12,10 +15,16 @@ public class ContactDeletionTests extends TestBase {
         if (! app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createContact(new ContactData("Leon", "Killer", "Paris", "killer@gmail.com", "+123456789", "[none]"));
         }
-        app.getContactHelper().selectContact();
+        List<ContactData> before = app.getContactHelper().getContactList();
+        app.getContactHelper().selectContact(before.size()-1);
         app.getContactHelper().deleteSelectedContact();
         app.getContactHelper().confirmContactDeletion();
         app.getNavigationHelper().gotoHomePage();
+        List<ContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(after.size(), before.size()-1);
+
+        before.remove(before.size()-1);
+        Assert.assertEquals(before, after);
     }
 
     @Test
@@ -29,9 +38,15 @@ public class ContactDeletionTests extends TestBase {
             app.getNavigationHelper().gotoHomePage();
             app.getContactHelper().createContact(new ContactData("Leon", "Killer", "Paris", "killer@gmail.com", "+123456789", "test1"));
         }
-        app.getContactHelper().selectContact();
+        List<ContactData> before = app.getContactHelper().getContactList();
+        app.getContactHelper().selectContact(before.size()-1);
         app.getContactHelper().deleteSelectedContact();
         app.getContactHelper().confirmContactDeletion();
         app.getNavigationHelper().gotoHomePage();
+        List<ContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(after.size(), before.size()-1);
+
+        before.remove(before.size()-1);
+        Assert.assertEquals(before, after);
     }
 }

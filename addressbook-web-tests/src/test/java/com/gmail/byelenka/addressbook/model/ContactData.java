@@ -1,6 +1,7 @@
 package com.gmail.byelenka.addressbook.model;
 
 public class ContactData {
+    private int id;
     private final String firstname;
     private final String lastname;
     private final String address;
@@ -9,12 +10,31 @@ public class ContactData {
     private String group;
 
     public ContactData(String firstname, String lastname, String address, String email, String homenumber, String group) {
+        this.id = Integer.MAX_VALUE;
         this.firstname = firstname;
         this.lastname = lastname;
         this.address = address;
         this.email = email;
         this.homenumber = homenumber;
         this.group = group;
+    }
+
+    public ContactData(int id, String firstname, String lastname, String address, String email, String homenumber, String group) {
+        this.id = id;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.address = address;
+        this.email = email;
+        this.homenumber = homenumber;
+        this.group = group;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstname() {
@@ -44,7 +64,8 @@ public class ContactData {
     @Override
     public String toString() {
         return "ContactData{" +
-                "firstname='" + firstname + '\'' +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 '}';
     }

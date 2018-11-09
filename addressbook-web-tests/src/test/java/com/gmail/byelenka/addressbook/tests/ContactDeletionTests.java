@@ -11,7 +11,7 @@ public class ContactDeletionTests extends TestBase {
 
     @Test
     public void testContactDeletion1() {
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         if (! app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createContact(new ContactData("Leon", "Killer", "Paris", "killer@gmail.com", "+123456789", "[none]"));
         }
@@ -19,7 +19,7 @@ public class ContactDeletionTests extends TestBase {
         app.getContactHelper().selectContact(before.size()-1);
         app.getContactHelper().deleteSelectedContact();
         app.getContactHelper().confirmContactDeletion();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size()-1);
 
@@ -29,20 +29,20 @@ public class ContactDeletionTests extends TestBase {
 
     @Test
     public void testContactDeletion2() {
-        app.getNavigationHelper().gotoGroupPage();
-        if (! app.getGroupHelper().isThereAGroup()) {
-            app.getGroupHelper().createGroup(new GroupData("test1", null, null));
+        app.goTo().groupPage();
+        if (! app.group().isThereAGroup()) {
+            app.group().create(new GroupData().withName("test1"));
         }
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         if (! app.getContactHelper().isThereAContact()) {
-            app.getNavigationHelper().gotoHomePage();
+            app.goTo().gotoHomePage();
             app.getContactHelper().createContact(new ContactData("Leon", "Killer", "Paris", "killer@gmail.com", "+123456789", "test1"));
         }
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContact(before.size()-1);
         app.getContactHelper().deleteSelectedContact();
         app.getContactHelper().confirmContactDeletion();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size()-1);
 

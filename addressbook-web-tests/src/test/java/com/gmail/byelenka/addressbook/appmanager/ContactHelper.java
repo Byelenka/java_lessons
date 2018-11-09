@@ -64,7 +64,7 @@ public class ContactHelper extends HelperBase{
         initContactCreation();
         fillContactForm(contact, true);
         submitContactCreation();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
     }
 
     public boolean isThereAContact() {

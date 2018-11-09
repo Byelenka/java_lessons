@@ -11,7 +11,7 @@ public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() throws Exception {
-      app.getNavigationHelper().gotoHomePage();
+      app.goTo().gotoHomePage();
       List<ContactData> before = app.getContactHelper().getContactList();
       ContactData contact = new ContactData("Leon", "Killer", "Paris", "killer@gmail.com", "+123456789", "test1");
       app.getContactHelper().createContact(contact);

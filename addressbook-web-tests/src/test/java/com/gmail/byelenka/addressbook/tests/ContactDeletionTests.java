@@ -1,12 +1,14 @@
 package com.gmail.byelenka.addressbook.tests;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
+import com.gmail.byelenka.addressbook.model.Contacts;
 import com.gmail.byelenka.addressbook.model.GroupData;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.List;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class ContactDeletionTests extends TestBase {
 
@@ -25,25 +27,21 @@ public class ContactDeletionTests extends TestBase {
 
     @Test
     public void testContactDeletion1() {
-        List<ContactData> before = app.contact().list();
-        int index = before.size()-1;
-        app.contact().delete(index);
-        List<ContactData> after = app.contact().list();
-        Assert.assertEquals(after.size(), before.size()-1);
-
-        before.remove(index);
-        Assert.assertEquals(before, after);
+        Contacts before = app.contact().allCont();
+        ContactData deletedContact = before.iterator().next();
+        app.contact().delete(deletedContact);
+        Contacts after = app.contact().allCont();
+        assertEquals(after.size(), before.size()-1);
+        assertThat(after, equalTo(before.without(deletedContact)));
     }
 
     @Test
     public void testContactDeletion2() {
-        List<ContactData> before = app.contact().list();
-        int index = before.size()-1;
-        app.contact().delete(index);
-        List<ContactData> after = app.contact().list();
-        Assert.assertEquals(after.size(), before.size()-1);
-
-        before.remove(index);
-        Assert.assertEquals(before, after);
+        Contacts before = app.contact().allCont();
+        ContactData deletedContact = before.iterator().next();
+        app.contact().delete(deletedContact);
+        Contacts after = app.contact().allCont();
+        assertEquals(after.size(), before.size()-1);
+        assertThat(after, equalTo(before.without(deletedContact)));
     }
 }

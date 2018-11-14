@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 import java.util.List;
 
-public class ContactHelper extends HelperBase{
+public class ContactHelper extends HelperBase {
 
     public ApplicationManager app;
 
@@ -40,15 +40,8 @@ public class ContactHelper extends HelperBase{
         click(By.linkText("add new"));
     }
 
-    public void initContactModification(int index) {
-        wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
-    }
-
     private void initContactModificationById(int id) {
         wd.findElement(By.xpath("//input[@value='" + id + "']/ancestor::tr/td[8]/a/img")).click();
-        //int row;
-        //wd.findElement(By.cssSelector("input[value='" + id + "']")).
-        //wd.findElement(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
 
 

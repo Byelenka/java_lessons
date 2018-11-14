@@ -45,7 +45,9 @@ public class ContactHelper extends HelperBase{
     }
 
     private void initContactModificationById(int id) {
-        wd.findElement(By.xpath("//img[@alt='Edit']/ancestor::tr[@name='entry']/td[1]/input[@value='" + id + "']")).click();
+        wd.findElement(By.xpath("//input[@value='" + id + "']/ancestor::tr/td[8]/a/img")).click();
+        //int row;
+        //wd.findElement(By.cssSelector("input[value='" + id + "']")).
         //wd.findElement(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
 

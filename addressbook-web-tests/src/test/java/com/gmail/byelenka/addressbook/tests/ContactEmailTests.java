@@ -1,8 +1,6 @@
 package com.gmail.byelenka.addressbook.tests;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -34,7 +32,6 @@ public class ContactEmailTests extends TestBase {
 
     private String mergeEmails(ContactData contact) {
         return Arrays.asList(contact.getEmail(), contact.getEmail2(),contact.getEmail3())
-                .stream().filter((s)->! s.equals(""))
-                .collect(Collectors.joining("\n"));
+                .stream().filter((s)->! s.equals("")).collect(Collectors.joining("\n"));
     }
 }

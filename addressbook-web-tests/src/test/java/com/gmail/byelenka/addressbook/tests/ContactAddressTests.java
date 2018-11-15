@@ -1,13 +1,14 @@
 package com.gmail.byelenka.addressbook.tests;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactAddressTests extends TestBase {
 
@@ -26,7 +27,7 @@ public class ContactAddressTests extends TestBase {
         ContactData contact = app.contact().allCont().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        MatcherAssert.assertThat(contact.getAddress(), CoreMatchers.equalTo(mergeAddress(contactInfoFromEditForm)));
+        assertThat(contact.getAddress(), equalTo(mergeAddress(contactInfoFromEditForm)));
     }
 
     private static String mergeAddress(ContactData contact) {

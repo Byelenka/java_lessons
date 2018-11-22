@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.gmail.byelenka.addressbook.tests.ContactCreationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-11-22T21:00:48" hostname="Viktor-AcerPC" time="22.892">
+  <properties/>
+  <testcase name="testContactCreation[0](ContactData{id=2147483647, firstname='Firstname 0', lastname='Lastname 0'})" classname="com.gmail.byelenka.addressbook.tests.ContactCreationTests" time="10.927"/>
+  <testcase name="testContactCreation[1](ContactData{id=2147483647, firstname='Firstname 1', lastname='Lastname 1'})" classname="com.gmail.byelenka.addressbook.tests.ContactCreationTests" time="6.13"/>
+  <testcase name="testContactCreation[2](ContactData{id=2147483647, firstname='Firstname 2', lastname='Lastname 2'})" classname="com.gmail.byelenka.addressbook.tests.ContactCreationTests" time="5.819"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

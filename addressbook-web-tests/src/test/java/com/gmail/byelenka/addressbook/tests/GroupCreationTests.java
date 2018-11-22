@@ -5,6 +5,8 @@ import com.gmail.byelenka.addressbook.model.Groups;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -54,7 +56,7 @@ public class GroupCreationTests extends TestBase {
     }
 
     @Test(dataProvider = "validGroupsFromJson")
-    public void testGroupCreation(GroupData group) throws Exception {
+    public void testGroupCreation(GroupData group) {
         app.goTo().groupPage();
         Groups before = app.group().all();
         app.group().create(group);
@@ -65,7 +67,7 @@ public class GroupCreationTests extends TestBase {
     }
 
     @Test
-    public void testBadGroupCreation() throws Exception {
+    public void testBadGroupCreation() {
         app.goTo().groupPage();
         Groups before = app.group().all();
         GroupData group = new GroupData().withName("test'");

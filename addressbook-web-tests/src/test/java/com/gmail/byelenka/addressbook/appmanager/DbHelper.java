@@ -1,5 +1,7 @@
 package com.gmail.byelenka.addressbook.appmanager;
 
+import com.gmail.byelenka.addressbook.model.ContactData;
+import com.gmail.byelenka.addressbook.model.Contacts;
 import com.gmail.byelenka.addressbook.model.GroupData;
 import com.gmail.byelenka.addressbook.model.Groups;
 import org.hibernate.Session;
@@ -29,5 +31,14 @@ public class DbHelper {
         session.getTransaction().commit();
         session.close();
         return new Groups(result);
+    }
+
+    public Contacts contacts() {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        List<ContactData> result = session.createQuery("from ContactData where deprecated = '0000-00-00'").list();
+        session.getTransaction().commit();
+        session.close();
+        return new Contacts(result);
     }
 }

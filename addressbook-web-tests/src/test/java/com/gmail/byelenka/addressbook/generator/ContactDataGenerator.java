@@ -35,10 +35,10 @@ public class ContactDataGenerator {
             jCommander.usage();
             return;
         }
-        generator.run();
+   //     generator.run();
     }
 
-    private void run() throws IOException {
+ /*   private void run() throws IOException {
         List<ContactData> contacts = generateContact(count);
         if (format.equals("xml")) {
             saveAsXml(contacts, new File(file));
@@ -47,7 +47,7 @@ public class ContactDataGenerator {
         } else {
             System.out.println("Unrecognizable format " + format);
         }
-    }
+    }*/
 
     private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
         Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
@@ -66,7 +66,7 @@ public class ContactDataGenerator {
         }
     }
 
-    private List<ContactData> generateContact(int count) {
+ /*   private List<ContactData> generateContact(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData()
@@ -75,5 +75,5 @@ public class ContactDataGenerator {
                     .withHomeNumber(String.format("+123456789%s", i)).withGroup(String.format("[none]")));
         }
         return contacts;
-    }
+    }*/
 }

@@ -2,6 +2,7 @@ package com.gmail.byelenka.addressbook.tests;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
 import com.gmail.byelenka.addressbook.model.Contacts;
+import com.gmail.byelenka.addressbook.model.Groups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -12,16 +13,17 @@ import static org.testng.Assert.assertEquals;
 public class ContactModificationTests extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() {
+ /*   public void ensurePreconditions() {
         if (app.db().contacts().size() == 0) {
             app.goTo().homePage();
             app.contact().createContact(new ContactData()
                     .withFirstname("Leon").withLastname("Killer").withAddress("Paris").withEmail("killer@gmail.com").withHomeNumber("+123456789").withGroup("[none]"));
         }
-    }
+    }*/
 
     @Test
     public void testContactModification() {
+        Groups groups = app.db().groups();
         Contacts before = app.db().contacts();
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData()

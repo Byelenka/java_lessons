@@ -13,13 +13,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class ContactPhoneTests extends TestBase {
 
     @BeforeMethod
-    public void ensurePreconditions() {
+ /*   public void ensurePreconditions() {
         app.goTo().homePage();
         if (app.contact().allCont().size() == 0) {
             app.contact().createContact(new ContactData()
                     .withFirstname("Leon").withLastname("Killer").withAddress("Paris").withEmail("killer@gmail.com").withHomeNumber("+123456789").withGroup("[none]"));
         }
-    }
+    }*/
 
     @Test
     public void testContactPhones() {

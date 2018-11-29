@@ -18,11 +18,11 @@ public class ContactDeletionTests extends TestBase {
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("test1"));
         }
-        if (app.db().contacts().size() == 0) {
+ /*       if (app.db().contacts().size() == 0) {
             app.goTo().homePage();
             app.contact().createContact(new ContactData()
                     .withFirstname("Leon").withLastname("Killer").withAddress("Paris").withEmail("killer@gmail.com").withHomeNumber("+123456789").withGroup("[none]"));
-        }
+        }*/
     }
 
     @Test

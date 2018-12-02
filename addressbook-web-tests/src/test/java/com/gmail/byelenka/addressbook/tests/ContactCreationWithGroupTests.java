@@ -1,14 +1,10 @@
 package com.gmail.byelenka.addressbook.tests;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
-import com.gmail.byelenka.addressbook.model.Contacts;
 import com.gmail.byelenka.addressbook.model.GroupData;
 import com.gmail.byelenka.addressbook.model.Groups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationWithGroupTests extends TestBase {
 
@@ -27,13 +23,7 @@ public class ContactCreationWithGroupTests extends TestBase {
                 .withFirstname("Leon").withLastname("Port").withAddress("Berlin")
                 .withEmail("leon@gmail.com").withHomeNumber("+123456789").inGroup(groups.iterator().next());
         app.goTo().homePage();
-        Contacts before = app.db().contacts();
         app.contact().createContact(contact);
-        Contacts after = app.db().contacts();
-        assertThat(after.size(), equalTo(before.size() + 1));
-        assertThat(after, equalTo(
-                before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
         System.out.println(contact.getGroups());
     }
-
 }

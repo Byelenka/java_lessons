@@ -2,7 +2,6 @@ package com.gmail.byelenka.addressbook.appmanager;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
 import com.gmail.byelenka.addressbook.model.Contacts;
-import com.gmail.byelenka.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -101,16 +100,25 @@ public class ContactHelper extends HelperBase {
         app.goTo().homePage();
     }
 
-    public void addToGroup(int id) {
+    public void deleteContactFromGroup(ContactData contact) {
+        wd.findElement(By.name("group")).click();
+        wd.findElement(By.xpath("//select[@name = 'group']/option[text() = 'test1']")).click();
+        selectContactById(contact.getId());
+        wd.findElement(By.name("remove")).click();
+        wd.findElement(By.xpath("//a[contains(text(), 'group page')]")).click();
+    }
+
+    public void addToGroup() {
         wd.findElement(By.name("to_group")).click();
-        wd.findElement(By.xpath("//option[@value='" + id + "']")).click();
+        wd.findElement(By.xpath("//select[@name = 'to_group']/option[text() = 'test1']")).click();
         wd.findElement(By.xpath("//input[@value = 'Add to']")).click();
         app.goTo().homePage();
     }
 
-    public void addContactToGroup(ContactData contact, GroupData group) {
+    public void addContactToGroup(ContactData contact) {
         selectContactById(contact.getId());
-        addToGroup(group.getId());
+        addToGroup();
+        //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contact.getGroups().iterator().next().getName());
     }
 
     public boolean isThereAContact() {

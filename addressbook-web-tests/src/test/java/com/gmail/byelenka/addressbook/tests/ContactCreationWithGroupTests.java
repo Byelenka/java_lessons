@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-public class ContactInGroupTests extends TestBase {
+public class ContactCreationWithGroupTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
@@ -21,7 +21,7 @@ public class ContactInGroupTests extends TestBase {
     }
 
     @Test
-    public void testContactCreationInGroup() {
+    public void testContactCreationWithGroup() {
         Groups groups = app.db().groups();
         ContactData contact = new ContactData()
                 .withFirstname("Leon").withLastname("Port").withAddress("Berlin")

@@ -55,7 +55,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test(dataProvider = "validContactsFromJson")
     public void testContactCreation(ContactData contact) throws Exception {
-        Groups groups = app.db().groups();
+//        Groups groups = app.db().groups();
         app.goTo().homePage();
         Contacts before = app.db().contacts();
         //File photo = new File("src/test/resources/SmehAva7.jpg");

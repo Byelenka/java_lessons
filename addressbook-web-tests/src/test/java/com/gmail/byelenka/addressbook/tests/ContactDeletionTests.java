@@ -3,6 +3,7 @@ package com.gmail.byelenka.addressbook.tests;
 import com.gmail.byelenka.addressbook.model.ContactData;
 import com.gmail.byelenka.addressbook.model.Contacts;
 import com.gmail.byelenka.addressbook.model.GroupData;
+import com.gmail.byelenka.addressbook.model.Groups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -18,11 +19,13 @@ public class ContactDeletionTests extends TestBase {
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("test1"));
         }
- /*       if (app.db().contacts().size() == 0) {
+        Groups groups = app.db().groups();
+        if (app.db().contacts().size() == 0) {
             app.goTo().homePage();
             app.contact().createContact(new ContactData()
-                    .withFirstname("Leon").withLastname("Killer").withAddress("Paris").withEmail("killer@gmail.com").withHomeNumber("+123456789").withGroup("[none]"));
-        }*/
+                    .withFirstname("Leon").withLastname("Killer").withAddress("Paris").withEmail("killer@gmail.com")
+                    .withHomeNumber("+123456789").inGroup(groups.iterator().next()));
+        }
     }
 
     @Test

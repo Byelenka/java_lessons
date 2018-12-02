@@ -2,6 +2,7 @@ package com.gmail.byelenka.addressbook.appmanager;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
 import com.gmail.byelenka.addressbook.model.Contacts;
+import com.gmail.byelenka.addressbook.model.GroupData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -98,6 +99,18 @@ public class ContactHelper extends HelperBase {
         confirmContactDeletion();
         contactCache = null;
         app.goTo().homePage();
+    }
+
+    public void addToGroup(int id) {
+        wd.findElement(By.name("to_group")).click();
+        wd.findElement(By.xpath("//option[@value='" + id + "']")).click();
+        wd.findElement(By.xpath("//input[@value = 'Add to']")).click();
+        app.goTo().homePage();
+    }
+
+    public void addContactToGroup(ContactData contact, GroupData group) {
+        selectContactById(contact.getId());
+        addToGroup(group.getId());
     }
 
     public boolean isThereAContact() {

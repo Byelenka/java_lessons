@@ -65,9 +65,9 @@ public class ContactData {
     @Transient
     private String allPhones;
 
- /*   @Expose
+    @Expose
     @Transient
-    private String group;*/
+    private String group;
 
 /*    @Transient
     private String photo;*/

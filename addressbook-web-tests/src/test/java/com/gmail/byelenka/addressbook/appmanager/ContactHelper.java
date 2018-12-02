@@ -101,16 +101,18 @@ public class ContactHelper extends HelperBase {
     }
 
     public void deleteContactFromGroup(ContactData contact) {
+        String groupName = app.db().groups().iterator().next().getName();
         wd.findElement(By.name("group")).click();
-        wd.findElement(By.xpath("//select[@name = 'group']/option[text() = 'test1']")).click();
+        wd.findElement(By.xpath("//select[@name = 'group']/option[text() = '" + groupName + "']")).click();
         selectContactById(contact.getId());
         wd.findElement(By.name("remove")).click();
         wd.findElement(By.xpath("//a[contains(text(), 'group page')]")).click();
     }
 
     public void addToGroup() {
+        String groupName = app.db().groups().iterator().next().getName();
         wd.findElement(By.name("to_group")).click();
-        wd.findElement(By.xpath("//select[@name = 'to_group']/option[text() = 'test1']")).click();
+        wd.findElement(By.xpath("//select[@name = 'to_group']/option[text() = '" + groupName + "']")).click();
         wd.findElement(By.xpath("//input[@value = 'Add to']")).click();
         app.goTo().homePage();
     }

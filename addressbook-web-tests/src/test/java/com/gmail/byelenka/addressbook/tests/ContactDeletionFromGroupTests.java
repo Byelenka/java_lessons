@@ -1,6 +1,7 @@
 package com.gmail.byelenka.addressbook.tests;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
+import com.gmail.byelenka.addressbook.model.Contacts;
 import com.gmail.byelenka.addressbook.model.GroupData;
 import com.gmail.byelenka.addressbook.model.Groups;
 import org.testng.annotations.BeforeMethod;
@@ -33,11 +34,11 @@ public class ContactDeletionFromGroupTests extends TestBase {
     @Test
     public void testContactDeletionFromGroup() {
         ContactData deletedContactFromGroup = app.db().contacts().iterator().next();
-        System.out.println(deletedContactFromGroup.getGroups());
         Groups before = deletedContactFromGroup.getGroups();
         System.out.println("Contact in group " + before);
         app.goTo().homePage();
         app.contact().deleteContactFromGroup(deletedContactFromGroup);
+        app.db().selectContactById(deletedContactFromGroup.getId());
         Groups after = deletedContactFromGroup.getGroups();
         System.out.println("Contact in group " + after);
         assertEquals(after.size(), before.size() - 1);

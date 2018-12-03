@@ -6,6 +6,8 @@ import com.gmail.byelenka.addressbook.model.Groups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.assertEquals;
+
 public class ContactCreationWithGroupTests extends TestBase {
 
     @BeforeMethod
@@ -19,11 +21,15 @@ public class ContactCreationWithGroupTests extends TestBase {
     @Test
     public void testContactCreationWithGroup() {
         Groups groups = app.db().groups();
-        ContactData contact = new ContactData()
+        ContactData contact = new ContactData();
+        Groups before = contact.getGroups();
+        ContactData contactNew = new ContactData()
                 .withFirstname("Leon").withLastname("Port").withAddress("Berlin")
                 .withEmail("leon@gmail.com").withHomeNumber("+123456789").inGroup(groups.iterator().next());
         app.goTo().homePage();
-        app.contact().createContact(contact);
-        System.out.println(contact.getGroups());
+        app.contact().createContact(contactNew);
+        Groups after = contactNew.getGroups();
+        System.out.println(contactNew.getGroups());
+        assertEquals(after.size(), before.size() + 1);
     }
 }

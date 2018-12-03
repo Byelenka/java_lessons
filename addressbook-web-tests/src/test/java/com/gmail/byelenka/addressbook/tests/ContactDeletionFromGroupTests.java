@@ -1,6 +1,7 @@
 package com.gmail.byelenka.addressbook.tests;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
+import com.gmail.byelenka.addressbook.model.Contacts;
 import com.gmail.byelenka.addressbook.model.GroupData;
 import com.gmail.byelenka.addressbook.model.Groups;
 import org.testng.annotations.BeforeMethod;

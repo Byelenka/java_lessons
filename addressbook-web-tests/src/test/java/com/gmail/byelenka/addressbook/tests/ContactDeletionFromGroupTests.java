@@ -1,13 +1,13 @@
 package com.gmail.byelenka.addressbook.tests;
 
 import com.gmail.byelenka.addressbook.model.ContactData;
-import com.gmail.byelenka.addressbook.model.Contacts;
 import com.gmail.byelenka.addressbook.model.GroupData;
 import com.gmail.byelenka.addressbook.model.Groups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactDeletionFromGroupTests extends TestBase {
 
@@ -41,6 +41,6 @@ public class ContactDeletionFromGroupTests extends TestBase {
         app.db().selectContactById(deletedContactFromGroup.getId());
         Groups after = deletedContactFromGroup.getGroups();
         System.out.println("Contact in group " + after);
-        assertEquals(after.size(), before.size() - 1);
+        assertThat(after.size(), equalTo(before.size() - 1));
     }
 }

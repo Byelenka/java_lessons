@@ -6,7 +6,8 @@ import com.gmail.byelenka.addressbook.model.Groups;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationWithGroupTests extends TestBase {
 
@@ -30,6 +31,6 @@ public class ContactCreationWithGroupTests extends TestBase {
         app.contact().createContact(contactNew);
         Groups after = contactNew.getGroups();
         System.out.println(contactNew.getGroups());
-        assertEquals(after.size(), before.size() + 1);
+        assertThat(after.size(), equalTo(before.size() + 1));
     }
 }

@@ -13,7 +13,6 @@ public class ContactAddingToGroupTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
-        Groups groups = app.db().groups();
         if (app.db().groups().size() == 0) {
             app.goTo().groupPage();
             app.group().create(new GroupData().withName("test1"));

@@ -12,16 +12,17 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HttpSession {
-    private CloseableHttpClient httpClient;
+    private CloseableHttpClient httpclient;
     private ApplicationManager app;
 
     public HttpSession(ApplicationManager app) {
         this.app = app;
-        httpClient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
+        httpclient = HttpClients.custom().setRedirectStrategy(new LaxRedirectStrategy()).build();
     }
 
     public boolean login(String username, String password) throws IOException {
@@ -32,9 +33,9 @@ public class HttpSession {
         params.add(new BasicNameValuePair("secure_session", "on"));
         params.add(new BasicNameValuePair("return", "index.php"));
         post.setEntity(new UrlEncodedFormEntity(params));
-        CloseableHttpResponse response = httpClient.execute(post);
+        CloseableHttpResponse response = httpclient.execute(post);
         String body = geTextFrom(response);
-        return body.contains(String.format("<span class=\"italic\">%s</span", username));
+        return body.contains(String.format("<span class=\"italic\">%s</span>", username));
     }
 
     private String geTextFrom(CloseableHttpResponse response) throws IOException {
@@ -47,9 +48,9 @@ public class HttpSession {
 
     public boolean isLoggedInAs(String username) throws IOException {
         HttpGet get = new HttpGet(app.getProperty("web.baseUrl") + "/index.php");
-        CloseableHttpResponse response = httpClient.execute(get);
+        CloseableHttpResponse response = httpclient.execute(get);
         String body = geTextFrom(response);
-        return body.contains(String.format("<span class=\"italic\">%s</span", username));
+        return body.contains(String.format("<span class=\"italic\">%s</span>", username));
     }
 
 

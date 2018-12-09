@@ -68,6 +68,11 @@ public class JamesHelper {
         readUntil("Password:");
         write("");
 
+        readUntil("Login id:");
+        write(login);
+        readUntil("Password:");
+        write(password);
+
         readUntil("Welcome " + login + ". HELP for a list of commands");
     }
 
@@ -107,7 +112,7 @@ public class JamesHelper {
         write("quit");
     }
 
-    public void drainEmail (String username, String password) throws MessagingException {
+    public void drainEmail(String username, String password) throws MessagingException {
         Folder inbox = openInbox(username, password);
         for (Message message : inbox.getMessages()) {
             message.setFlag(Flags.Flag.DELETED, true);

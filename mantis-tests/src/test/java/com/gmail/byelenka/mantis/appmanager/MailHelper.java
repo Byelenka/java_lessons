@@ -1,5 +1,6 @@
 package com.gmail.byelenka.mantis.appmanager;
 
+import com.gmail.byelenka.mantis.model.MailMessage;
 import org.subethamail.wiser.Wiser;
 import org.subethamail.wiser.WiserMessage;
 

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.MatchResult;
 
 public class ApplicationManager {
-    private WebDriver wd;
+    WebDriver wd;
 
     private final Properties properties;
 
@@ -23,6 +23,7 @@ public class ApplicationManager {
     private FtpHelper ftp;
     private MailHelper mailHelper;
     private JamesHelper jamesHelper;
+    private NavigationHelper goTo;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -90,5 +91,12 @@ public class ApplicationManager {
             jamesHelper = new JamesHelper(this);
         }
         return jamesHelper;
+    }
+
+    public NavigationHelper goTo() {
+        if (goTo == null) {
+            goTo = new NavigationHelper(this);
+        }
+        return goTo;
     }
 }

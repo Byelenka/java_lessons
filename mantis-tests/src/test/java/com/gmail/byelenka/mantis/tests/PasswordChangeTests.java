@@ -17,12 +17,12 @@ public class PasswordChangeTests extends TestBase {
         String password = "password";
         app.goTo().loginPage("administrator", "root");
         app.goTo().manageUsersPage();
-        String email = app.goTo().selectUserEmail();
-        String user = app.goTo().selectUser();
+        String email = app.user().selectUserEmail();
+        String user = app.user().selectUser();
         app.james().initTelnetSession();
+        app.james().doesUserExist(user);
         app.james().drainEmail(user, password);
-        app.goTo().resetUserPassword();
-
+        app.user().resetUserPassword();
         List<MailMessage> mailMessages = app.james().waitForMail(user, password, 60000);
         String confirmationLink = findConfirmationLink(mailMessages, email);
         app.registration().finish(confirmationLink, password);

@@ -19,19 +19,4 @@ public class NavigationHelper extends HelperBase {
             click(By.cssSelector("a[href = '/mantisbt-1.2.19/manage_overview_page.php']"));
             click(By.cssSelector("a[href = '/mantisbt-1.2.19/manage_user_page.php']"));
     }
-
-    public String selectUserEmail() {
-        click(By.xpath(String.format("//a[contains(text(), 'user')]")));
-        String email = wd.findElement(By.name("email")).getAttribute("value");
-        return email;
-    }
-
-    public String selectUser() {
-        String user = wd.findElement(By.name("username")).getAttribute("value");
-        return user;
-    }
-
-    public void resetUserPassword() {
-        click(By.xpath("//input[@value='Reset Password']"));
-    }
 }

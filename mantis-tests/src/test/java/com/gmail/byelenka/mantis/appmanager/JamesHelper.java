@@ -49,7 +49,7 @@ public class JamesHelper {
         closeTelnetSession();
     }
 
-    private void initTelnetSession() {
+    public void initTelnetSession() {
         mailserver = app.getProperty("mailserver.host");
         int port = Integer.parseInt(app.getProperty("mailserver.port"));
         String login = app.getProperty("mailserver.adminlogin");
@@ -108,7 +108,7 @@ public class JamesHelper {
     }
 
 
-    private void closeTelnetSession() {
+    public void closeTelnetSession() {
         write("quit");
     }
 

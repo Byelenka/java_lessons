@@ -14,14 +14,10 @@ public class PasswordChangeTests extends TestBase {
 
     @Test
     public void testPasswordChange() throws MessagingException, IOException {
-        //long now = System.currentTimeMillis(); //поменять
-        //String user = String.format("user%s", now); //поменять
         String password = "password";
-        //String email = String.format("user%s@localhost", now); //поменять
-
         app.goTo().loginPage("administrator", "root");
         app.goTo().manageUsersPage();
-        String email = app.goTo().selectUserEmail(4);
+        String email = app.goTo().selectUserEmail();
         String user = app.goTo().selectUser();
         app.james().initTelnetSession();
         app.james().drainEmail(user, password);

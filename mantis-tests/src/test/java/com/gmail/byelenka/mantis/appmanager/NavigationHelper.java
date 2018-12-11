@@ -20,18 +20,18 @@ public class NavigationHelper extends HelperBase {
             click(By.cssSelector("a[href = '/mantisbt-1.2.19/manage_user_page.php']"));
     }
 
-    public String selectUserEmail(int id) {
-        click(By.cssSelector(String.format("a[href = 'manage_user_edit_page.php?user_id=%s']", id)));
+    public String selectUserEmail() {
+        click(By.xpath(String.format("//a[contains(text(), 'user')]")));
         String email = wd.findElement(By.name("email")).getAttribute("value");
         return email;
-    }
-
-    public void resetUserPassword() {
-        click(By.xpath("//input[@value='Reset Password']"));
     }
 
     public String selectUser() {
         String user = wd.findElement(By.name("username")).getAttribute("value");
         return user;
+    }
+
+    public void resetUserPassword() {
+        click(By.xpath("//input[@value='Reset Password']"));
     }
 }

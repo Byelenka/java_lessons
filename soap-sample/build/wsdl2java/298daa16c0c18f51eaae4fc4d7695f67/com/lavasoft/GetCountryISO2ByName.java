@@ -1,9 +1,8 @@
 
-package net.webservicex;
+package com.lavasoft;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -18,7 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="IPAddress" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="countryName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -29,36 +28,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "ipAddress"
+    "countryName"
 })
-@XmlRootElement(name = "GetGeoIP")
-public class GetGeoIP {
+@XmlRootElement(name = "GetCountryISO2ByName")
+public class GetCountryISO2ByName {
 
-    @XmlElement(name = "IPAddress")
-    protected String ipAddress;
+    protected String countryName;
 
     /**
-     * Gets the value of the ipAddress property.
+     * Gets the value of the countryName property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getIPAddress() {
-        return ipAddress;
+    public String getCountryName() {
+        return countryName;
     }
 
     /**
-     * Sets the value of the ipAddress property.
+     * Sets the value of the countryName property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setIPAddress(String value) {
-        this.ipAddress = value;
+    public void setCountryName(String value) {
+        this.countryName = value;
     }
 
 }

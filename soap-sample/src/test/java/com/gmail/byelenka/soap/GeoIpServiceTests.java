@@ -1,15 +1,15 @@
 package com.gmail.byelenka.soap;
 
-import net.webservicex.GeoIP;
-import net.webservicex.GeoIPService;
-import org.testng.Assert;
+import com.lavasoft.GeoIPService;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
 
 public class GeoIpServiceTests {
 
     @Test
     public void testMyIp() {
-        GeoIP geoIP = new GeoIPService().getGeoIPServiceSoap12().getGeoIP("10.10.255.63");
-        Assert.assertEquals(geoIP.getCountryCode(), "UA");
+        String geoIp = new GeoIPService().getGeoIPServiceSoap12().getIpLocation20("10.18.53.38");
+        assertEquals(geoIp, "UA");
     }
 }

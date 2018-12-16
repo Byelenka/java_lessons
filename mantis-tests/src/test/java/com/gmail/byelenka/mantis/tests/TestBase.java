@@ -38,10 +38,10 @@ public class TestBase {
         IssueData issueData = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
         String status = String.valueOf(issueData.getStatus());
         //boolean issueCheckin = mc.mc_issue_checkin("administrator", "root", BigInteger.valueOf(issueId), "status", true);
-        if (status != "resolved") {
-            return true;
-        } else {
+        if (status == "resolved") {
             return false;
+        } else {
+            return true;
         }
     }
 

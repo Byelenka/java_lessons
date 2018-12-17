@@ -3,7 +3,6 @@ package com.gmail.byelenka.mantis.tests;
 import biz.futureware.mantis.rpc.soap.client.IssueData;
 import biz.futureware.mantis.rpc.soap.client.MantisConnectPortType;
 import com.gmail.byelenka.mantis.appmanager.ApplicationManager;
-import com.gmail.byelenka.mantis.model.Issue;
 import org.openqa.selenium.remote.BrowserType;
 import org.testng.SkipException;
 import org.testng.annotations.AfterSuite;
@@ -36,9 +35,8 @@ public class TestBase {
     public boolean isIssueOpen(int issueId) throws MalformedURLException, ServiceException, RemoteException {
         MantisConnectPortType mc = app.soap().getMantisConnect();
         IssueData issueData = mc.mc_issue_get("administrator", "root", BigInteger.valueOf(issueId));
-        String status = String.valueOf(issueData.getStatus());
-        //boolean issueCheckin = mc.mc_issue_checkin("administrator", "root", BigInteger.valueOf(issueId), "status", true);
-        if (status == "resolved") {
+        String status = issueData.getStatus().getName();
+        if (status.equals("resolved")) {
             return false;
         } else {
             return true;

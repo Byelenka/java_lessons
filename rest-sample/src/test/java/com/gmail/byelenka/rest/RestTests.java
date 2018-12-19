@@ -13,17 +13,13 @@ import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.net.MalformedURLException;
-import java.rmi.RemoteException;
-import java.util.Iterator;
 import java.util.Set;
 
 public class RestTests {
 
     @Test
     public void testCreateIssue() throws IOException {
-        if (isIssueOpen(631) == false) {
+        if (isIssueOpen(633) == false) {
             Set<Issue> oldIssues = getIssues();
             Issue newIssue = new Issue().withSubject("Test issue").withDescription("New test issue");
             int issueId = createIssue(newIssue);
@@ -31,7 +27,7 @@ public class RestTests {
             oldIssues.add(newIssue.withId(issueId));
             Assert.assertEquals(newIssues, oldIssues);
         } else {
-            skipIfNotFixed(631);
+            skipIfNotFixed(633);
         }
     }
 
@@ -58,22 +54,20 @@ public class RestTests {
     }
 
     public boolean isIssueOpen(int issueId) throws IOException {
-        String json = getExecutor().execute(Request.Get("http://bugify.stqa.ru/api/issues.json"))
+        String json = getExecutor().execute(Request.Get("http://bugify.stqa.ru/api/issues/" + issueId + ".json"))
                 .returnContent().asString();
         JsonElement parsed = new JsonParser().parse(json);
         JsonArray issues = parsed.getAsJsonObject().get("issues").getAsJsonArray();
         Set<Issue> allIssues = new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
         }.getType());
-        String statename = "";
-        Iterator<Issue> issueIter = allIssues.iterator();
-        while (issueIter.hasNext()) {
-            Issue tIssue = issueIter.next();
-            if (tIssue.getId() == issueId) {
-                statename = tIssue.getState_name();
-                break;
-            }
+        String stateName = "";
+        if (allIssues.size() == 1) {
+            Issue issue = allIssues.iterator().next();
+            stateName = issue.getState_name();
+        } else {
+            System.out.println("There are more than 1 issue in json");
         }
-        if (statename.equals("Closed")) {
+        if (stateName.equals("Closed")) {
             return false;
         } else {
             return true;

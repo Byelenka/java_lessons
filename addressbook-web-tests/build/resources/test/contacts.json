@@ -6,21 +6,5 @@
     "email": "email0@gmail.com",
     "home": "+1234567890",
     "group": "[none]"
-  },
-  {
-    "firstname": "Firstname 1",
-    "lastname": "Lastname 1",
-    "address": "Address 1",
-    "email": "email1@gmail.com",
-    "home": "+1234567891",
-    "group": "[none]"
-  },
-  {
-    "firstname": "Firstname 2",
-    "lastname": "Lastname 2",
-    "address": "Address 2",
-    "email": "email2@gmail.com",
-    "home": "+1234567892",
-    "group": "[none]"
   }
 ]

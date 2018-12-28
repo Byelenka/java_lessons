@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generator="Robot 3.1 (Jython 2.7.0 on java1.8.0_181)" generated="20181228 17:32:25.260">
+<suite source="D:\GitHub\java_lessons\addressbook-web-tests\src\test\resources\rf" name="Rf" id="s1">
+<suite source="D:\GitHub\java_lessons\addressbook-web-tests\src\test\resources\rf\groups.robot" name="Groups" id="s1-s1">
+<kw type="setup" library="com.gmail.byelenka.addressbook.rf.AddressbookKeywords" name="Init Application Manager">
+<msg level="INFO" timestamp="20181228 17:32:37.173">Starting ChromeDriver 2.43.600210 (68dcf5eebde37173d4027fa8635e332711d2874a) on port 39862
+Only local connections are allowed.
+??? 28, 2018 5:32:34 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS</msg>
+<status endtime="20181228 17:32:37.181" starttime="20181228 17:32:25.984" status="PASS"></status>
+</kw>
+<test name="Can Create Group With Valid Data" id="s1-s1-t1">
+<kw library="com.gmail.byelenka.addressbook.rf.AddressbookKeywords" name="Get Group Count">
+<assign>
+<var>${old_count}</var>
+</assign>
+<msg level="INFO" timestamp="20181228 17:32:37.742">${old_count} = 1</msg>
+<status endtime="20181228 17:32:37.747" starttime="20181228 17:32:37.207" status="PASS"></status>
+</kw>
+<kw library="com.gmail.byelenka.addressbook.rf.AddressbookKeywords" name="Create Group">
+<arguments>
+<arg>test name</arg>
+<arg>test header</arg>
+<arg>test footer</arg>
+</arguments>
+<status endtime="20181228 17:32:40.160" starttime="20181228 17:32:37.750" status="PASS"></status>
+</kw>
+<kw library="com.gmail.byelenka.addressbook.rf.AddressbookKeywords" name="Get Group Count">
+<assign>
+<var>${new_count}</var>
+</assign>
+<msg level="INFO" timestamp="20181228 17:32:40.558">${new_count} = 2</msg>
+<status endtime="20181228 17:32:40.559" starttime="20181228 17:32:40.168" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Evaluate">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>${old_count} + 1</arg>
+</arguments>
+<assign>
+<var>${expected_count}</var>
+</assign>
+<msg level="INFO" timestamp="20181228 17:32:40.578">${expected_count} = 2</msg>
+<status endtime="20181228 17:32:40.580" starttime="20181228 17:32:40.561" status="PASS"></status>
+</kw>
+<kw library="BuiltIn" name="Should Be Equal As Integers">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${new_count}</arg>
+<arg>${expected_count}</arg>
+</arguments>
+<status endtime="20181228 17:32:40.600" starttime="20181228 17:32:40.583" status="PASS"></status>
+</kw>
+<status critical="yes" endtime="20181228 17:32:40.606" starttime="20181228 17:32:37.192" status="PASS"></status>
+</test>
+<kw type="teardown" library="com.gmail.byelenka.addressbook.rf.AddressbookKeywords" name="Stop Application Manager">
+<status endtime="20181228 17:32:41.337" starttime="20181228 17:32:40.622" status="PASS"></status>
+</kw>
+<status endtime="20181228 17:32:41.341" starttime="20181228 17:32:25.878" status="PASS"></status>
+</suite>
+<status endtime="20181228 17:32:41.384" starttime="20181228 17:32:25.285" status="PASS"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" name="Rf" id="s1">Rf</stat>
+<stat pass="1" fail="0" name="Groups" id="s1-s1">Rf.Groups</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

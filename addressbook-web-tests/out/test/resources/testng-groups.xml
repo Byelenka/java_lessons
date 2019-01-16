@@ -3,9 +3,7 @@
 <suite name="Suite1" verbose="1" >
     <test name="Groups" >
         <classes>
-            <class name="com.gmail.byelenka.addressbook.tests.GroupCreationTests" />
             <class name="com.gmail.byelenka.addressbook.tests.GroupModificationTests" />
-            <class name="com.gmail.byelenka.addressbook.tests.GroupDeletionTests" />
         </classes>
     </test>
 </suite>
